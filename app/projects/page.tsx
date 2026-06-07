@@ -94,7 +94,7 @@ export default async function ProjectsPage() {
           {ongoing.length > 0 && (
             <div className="mb-16">
               <div className="flex items-center gap-4 mb-8">
-                <div className="w-2 h-2 rounded-full animate-pulse" style={{ color: '#3a78a8',background: 'var(--accent)' }} />
+                <div className="w-2 h-2 rounded-full animate-pulse" style={{ color: '#3a78a8', background: '#3a78a8' }} />
                 <h2 className="font-mono text-sm tracking-widest uppercase" style={{ color: '#3a78a8' }}>Ongoing Research</h2>
                 <div className="flex-1 h-px" style={{ background: 'var(--border)' }} />
               </div>
