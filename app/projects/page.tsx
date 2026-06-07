@@ -75,7 +75,9 @@ export default async function ProjectsPage() {
         <div className="flex items-end justify-between">
           <h1 className="font-display text-5xl md:text-6xl text-accent">Projects</h1>
           <div className="flex gap-4 pb-2 font-mono text-xs" style={{ color: 'var(--muted)' }}>
-            <span>{ongoing.length} ongoing</span>
+            <span style={{ color: '#3a78a8' }}>
+              {ongoing.length} ongoing
+            </span>
             <span>·</span>
             <span>{completed.length} completed</span>
           </div>
@@ -92,8 +94,8 @@ export default async function ProjectsPage() {
           {ongoing.length > 0 && (
             <div className="mb-16">
               <div className="flex items-center gap-4 mb-8">
-                <div className="w-2 h-2 rounded-full animate-pulse" style={{ background: 'var(--accent)' }} />
-                <h2 className="font-mono text-sm tracking-widest uppercase" style={{ color: 'var(--muted)' }}>Ongoing Research</h2>
+                <div className="w-2 h-2 rounded-full animate-pulse" style={{ color: '#3a78a8',background: 'var(--accent)' }} />
+                <h2 className="font-mono text-sm tracking-widest uppercase" style={{ color: '#3a78a8' }}>Ongoing Research</h2>
                 <div className="flex-1 h-px" style={{ background: 'var(--border)' }} />
               </div>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
