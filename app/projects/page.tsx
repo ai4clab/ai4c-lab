@@ -30,7 +30,7 @@ function ProjectCard({ p }: { p: Project }) {
               background: isOngoing ? '#dff1ff' : 'rgba(0,0,0,0.5)',
               color: isOngoing ? '#3a78a8' : 'white',
             }}>
-            {p.status || 'Project'}
+            {isOngoing ? '진행 중' : '완료'}
           </span>
         </div>
       </div>
@@ -75,9 +75,9 @@ export default async function ProjectsPage() {
         <div className="flex items-end justify-between">
           <h1 className="font-display text-5xl md:text-6xl text-accent">Projects</h1>
           <div className="flex gap-4 pb-2 font-mono text-xs" style={{ color: 'var(--muted)' }}>
-            <span>{ongoing.length} 진행 중</span>
+            <span>{ongoing.length} ongoing</span>
             <span>·</span>
-            <span>{completed.length} 완료</span>
+            <span>{completed.length} completed</span>
           </div>
         </div>
       </div>
