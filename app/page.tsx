@@ -42,7 +42,7 @@ function TechnologyIcon({ kind }: { kind: string }) {
       <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M4 17v-2a8 8 0 0 1 16 0v2" />
         <path d="M7 17v2M12 15v4M17 17v2" />
-        <circle cx="12" cy="8" r="2" />
+        <circle cx="12" cy="7" r="2.5" />
       </svg>
     )
   }
