@@ -60,7 +60,7 @@ function TechnologyIcon({ kind }: { kind: string }) {
   if (kind === 'exoskeleton') {
     return (
       <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M6 6h12v2H8z" fill="#ffffff" />
+        <path d="M6 6h12v2H12z" fill="#ffffff" />
         <path d="M10 8v4M14 8v4" />
         <path d="M6 12h12" />
         <path d="M8 12v5M16 12v5" />
