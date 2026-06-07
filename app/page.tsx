@@ -64,7 +64,7 @@ function TechnologyIcon({ kind }: { kind: string }) {
         <path d="M10 8v4M14 8v4" />
         <path d="M6 12h12" />
         <path d="M8 12v5M16 12v5" />
-        <path d="M6 17h4M14 17h4" />
+        <path d="M6 17h4v-1h-4M14 17h4v-1h-4" />
       </svg>
     )
   }
