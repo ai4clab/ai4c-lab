@@ -39,7 +39,7 @@ const researchAreas = [
 function TechnologyIcon({ kind }: { kind: string }) {
   if (kind === 'sensing') {
     return (
-      <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M4 17v-2a8 8 0 0 1 16 0v2" />
         <path d="M7 17v2M12 15v4M17 17v2" />
         <circle cx="12" cy="8" r="2" />
@@ -49,7 +49,7 @@ function TechnologyIcon({ kind }: { kind: string }) {
 
   if (kind === 'arvr') {
     return (
-      <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M3 12a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v3h-4l-2-3h-6l-2 3H3z" />
         <circle cx="9" cy="12" r="1.2" />
         <circle cx="15" cy="12" r="1.2" />
@@ -59,7 +59,7 @@ function TechnologyIcon({ kind }: { kind: string }) {
 
   if (kind === 'exoskeleton') {
     return (
-      <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M8 4h8v4H8z" />
         <path d="M10 8v4M14 8v4" />
         <path d="M6 12h12" />
@@ -70,7 +70,7 @@ function TechnologyIcon({ kind }: { kind: string }) {
   }
 
   return (
-    <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
       <path d="M4 7h16M4 12h16M4 17h16" />
       <path d="M7 4v16M12 4v16M17 4v16" />
     </svg>
