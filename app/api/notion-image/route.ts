@@ -52,7 +52,7 @@ export async function GET(req: NextRequest) {
     .webp({ quality: 82 })
     .toBuffer()
 
-  return new NextResponse(output, {
+  return new NextResponse(output as unknown as BodyInit, {
     headers: {
       'Content-Type': 'image/webp',
       'Cache-Control': 'public, max-age=3600, s-maxage=3600',
