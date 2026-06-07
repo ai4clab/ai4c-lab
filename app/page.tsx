@@ -42,7 +42,7 @@ function TechnologyIcon({ kind }: { kind: string }) {
       <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M4 14a8 8 0 0 1 16 0" />
         <path d="M4 17v2M8 17v2M12 15v4M16 17v2M20 17v2" />
-        <circle cx="12" cy="9.5" r="1.5" fill="#ffffff" />
+        <circle cx="12" cy="10" r="1.5" fill="#ffffff" />
       </svg>
     )
   }
@@ -64,7 +64,7 @@ function TechnologyIcon({ kind }: { kind: string }) {
         <path d="M10 8v4M14 8v4" />
         <path d="M6 12h12" />
         <path d="M8 12v5M16 12v5" />
-        <path d="M6 17h4v-1h-4M14 17h4v-1h-4" />
+        <path d="M6 17h4v-1h-4v1M14 17h4v-1h-4v1" fill="#ffffff" />
       </svg>
     )
   }
