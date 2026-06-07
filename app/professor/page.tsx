@@ -91,6 +91,15 @@ export default async function ProfessorPage() {
             <h3 className="font-display text-2xl text-accent mb-4">Biography</h3>
             <div className="space-y-4 text-sm" style={{ color: 'var(--muted)' }}>
               <p>
+                서준오 교수는 한양대학교 건축공학과 부교수로 재직 중입니다(2026년 3월 부임). 그의 연구는 최첨단 인공지능 기술을 통해 건설 산업과 건조환경을 혁신하는 데 초점을 맞추고 있습니다.
+              </p>
+              <p>
+                이전에는 홍콩이공대학교 건축·부동산학과 부교수로 재직하며(2016–2026) AI 기반 건설 연구의 토대를 다졌습니다.
+              </p>
+              <p>
+                그의 연구는 딥러닝, 센싱 기술, AR/VR, 로보틱스, 생성형 AI 등 첨단 인공지능 기술을 통합하여 건설 및 건조환경의 효율성, 지속가능성, 그리고 인간 중심 설계를 향상시키는 것을 목표로 합니다.
+              </p>
+              <p>
                 Dr. JoonOh Seo is an Associate Professor in the Department of Architectural Engineering at Hanyang University
                 (starting March 2026). His research focuses on revolutionizing the construction industry and built
                 environment through cutting-edge artificial intelligence solutions.
