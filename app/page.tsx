@@ -51,8 +51,8 @@ function TechnologyIcon({ kind }: { kind: string }) {
     return (
       <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M3 12a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v7h-7l-1-2h-2l-1 2H3z" />
-        <circle cx="8" cy="13" r="1.4" fill="#ffffff" />
-        <circle cx="16" cy="13" r="1.4" fill="#ffffff" />
+        <circle cx="8" cy="13" r="1" fill="#ffffff" />
+        <circle cx="16" cy="13" r="1" fill="#ffffff" />
       </svg>
     )
   }
