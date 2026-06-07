@@ -25,7 +25,7 @@ function ProjectCard({ p }: { p: Project }) {
         )}
         {/* Status badge */}
         <div className="absolute top-3 right-3">
-          <span className="font-mono text-xs px-2 py-1"
+          <span className="font-bold text-xs px-2 py-1"
             style={{
               background: isOngoing ? '#dff1ff' : 'rgba(0,0,0,0.5)',
               color: isOngoing ? '#3a78a8' : 'white',
