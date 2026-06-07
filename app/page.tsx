@@ -40,8 +40,8 @@ function TechnologyIcon({ kind }: { kind: string }) {
   if (kind === 'sensing') {
     return (
       <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M4 17v-2a8 8 0 0 1 16 0v2" />
-        <path d="M7 17v2M12 15v4M17 17v2" />
+        <path d="M4 15a8 8 0 0 1 16 0" />
+        <path d="M4 17v2M7 17v2M12 15v4M17 17v2M22 17v2" />
         <circle cx="12" cy="7" r="2.5" fill="#ffffff" />
       </svg>
     )
