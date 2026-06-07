@@ -27,5 +27,6 @@ jobs:
           NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
           NOTION_PUBLICATIONS_DB_ID: ${{ secrets.NOTION_PUBLICATIONS_DB_ID }}
           SCHOLAR_USER_ID: ${{ secrets.SCHOLAR_USER_ID }}
+          SERPAPI_API_KEY: ${{ secrets.SERPAPI_API_KEY }}
           SCHOLAR_LANG: en
         run: node scripts/sync-scholar-publications.js

@@ -85,6 +85,9 @@ Google Scholar 변동사항을 Notion `ai4c-publications` DB로 자동 반영하
 - `NOTION_TOKEN`
 - `NOTION_PUBLICATIONS_DB_ID`
 - `SCHOLAR_USER_ID` (예: `egT87vMAAAAJ`)
+- `SERPAPI_API_KEY` (권장, GitHub Actions에서 Scholar 403 차단 회피용)
+
+> 참고: `SERPAPI_API_KEY` 없이 GitHub Actions에서 직접 Scholar 스크래핑을 시도하면 403이 발생할 수 있습니다.
 
 ### 수동 로컬 실행
 ```bash

@@ -3,6 +3,7 @@ const { Client } = require('@notionhq/client')
 const SCHOLAR_USER_ID = process.env.SCHOLAR_USER_ID || 'egT87vMAAAAJ'
 const SCHOLAR_LANG = process.env.SCHOLAR_LANG || 'en'
 const MAX_PAGES = Number(process.env.SCHOLAR_MAX_PAGES || '25')
+const SERPAPI_API_KEY = process.env.SERPAPI_API_KEY || ''
 
 function ensureEnv(name) {
   const value = process.env[name]
@@ -42,10 +43,31 @@ async function fetchScholarPage(cstart) {
   })
 
   if (!res.ok) {
+    if (res.status === 403) {
+      throw new Error(
+        `Failed to fetch Scholar page (403). GitHub Actions runners are commonly blocked by Scholar. ` +
+          `Set SERPAPI_API_KEY secret and use SerpAPI path.`
+      )
+    }
     throw new Error(`Failed to fetch Scholar page (${res.status}): ${url}`)
   }
 
   return res.text()
+}
+
+async function fetchJson(url) {
+  const res = await fetch(url, {
+    headers: {
+      Accept: 'application/json',
+      'User-Agent': 'Mozilla/5.0',
+    },
+  })
+
+  if (!res.ok) {
+    throw new Error(`Failed to fetch JSON (${res.status}): ${url}`)
+  }
+
+  return res.json()
 }
 
 function parseScholarRows(html) {
@@ -106,6 +128,53 @@ async function collectScholarPublications() {
   return collected
 }
 
+async function collectScholarPublicationsViaSerpApi() {
+  const collected = []
+  const seen = new Set()
+
+  for (let page = 0; page < MAX_PAGES; page++) {
+    const start = page * 20
+    const url =
+      `https://serpapi.com/search.json?engine=google_scholar_author` +
+      `&author_id=${encodeURIComponent(SCHOLAR_USER_ID)}` +
+      `&hl=${encodeURIComponent(SCHOLAR_LANG)}` +
+      `&start=${start}` +
+      `&api_key=${encodeURIComponent(SERPAPI_API_KEY)}`
+
+    const payload = await fetchJson(url)
+    const articles = payload?.articles || []
+    if (!Array.isArray(articles) || articles.length === 0) break
+
+    let added = 0
+    for (const article of articles) {
+      const title = decodeHtml((article?.title || '').trim())
+      const key = normalizeTitle(title)
+      if (!key || seen.has(key)) continue
+
+      const authors = decodeHtml((article?.authors || '').trim())
+      const journal = decodeHtml((article?.publication || '').trim())
+      const year = Number(article?.year) || null
+      const citations = Number(article?.cited_by?.value || 0) || 0
+      const url = `https://scholar.google.com/scholar?q=${encodeURIComponent(title)}`
+
+      seen.add(key)
+      collected.push({
+        title,
+        authors,
+        journal,
+        year,
+        citations,
+        url,
+      })
+      added++
+    }
+
+    if (added === 0 || articles.length < 20) break
+  }
+
+  return collected
+}
+
 function richTextValue(text) {
   if (!text) return []
   return [{ text: { content: text.slice(0, 2000) } }]
@@ -127,7 +196,9 @@ async function main() {
   const publicationsDbId = ensureEnv('NOTION_PUBLICATIONS_DB_ID')
   const notion = new Client({ auth: notionToken })
 
-  const scholarPublications = await collectScholarPublications()
+  const scholarPublications = SERPAPI_API_KEY
+    ? await collectScholarPublicationsViaSerpApi()
+    : await collectScholarPublications()
   if (scholarPublications.length === 0) {
     throw new Error('No publications parsed from Google Scholar. Sync aborted.')
   }
