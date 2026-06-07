@@ -87,6 +87,15 @@ Google Scholar 변동사항을 Notion `ai4c-publications` DB로 자동 반영하
 - `SCHOLAR_USER_ID` (예: `egT87vMAAAAJ`)
 - `SERPAPI_API_KEY` (권장, GitHub Actions에서 Scholar 403 차단 회피용)
 
+실패 시 메일 알림까지 받으려면 아래 시크릿도 추가:
+
+- `SMTP_SERVER` (예: `smtp.gmail.com`)
+- `SMTP_PORT` (예: `465`)
+- `SMTP_USERNAME` (발송 계정)
+- `SMTP_PASSWORD` (앱 비밀번호 또는 SMTP 비밀번호)
+- `ALERT_EMAIL_FROM` (예: `ai4c-bot@yourdomain.com`)
+- `ALERT_EMAIL_TO` (알림 수신 메일)
+
 > 참고: `SERPAPI_API_KEY` 없이 GitHub Actions에서 직접 Scholar 스크래핑을 시도하면 403이 발생할 수 있습니다.
 
 ### 수동 로컬 실행

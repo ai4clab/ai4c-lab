@@ -3,8 +3,36 @@ import PublicationsKpi from './PublicationsKpi'
 
 export const revalidate = 60
 
+const UNDER_REVIEW_YEAR = 2026
+
+function getPublicationYear(pub: Publication): number {
+  if (!pub.date) return UNDER_REVIEW_YEAR
+
+  const year = new Date(pub.date).getFullYear()
+  return Number.isNaN(year) ? UNDER_REVIEW_YEAR : year
+}
+
+function comparePublications(a: Publication, b: Publication): number {
+  const aUnderReview = !a.date
+  const bUnderReview = !b.date
+
+  if (aUnderReview !== bUnderReview) {
+    return aUnderReview ? -1 : 1
+  }
+
+  const aTime = a.date ? new Date(a.date).getTime() : 0
+  const bTime = b.date ? new Date(b.date).getTime() : 0
+
+  if (aTime !== bTime) {
+    return bTime - aTime
+  }
+
+  return a.title.localeCompare(b.title)
+}
+
 function PublicationRow({ pub }: { pub: Publication }) {
-  const year = pub.date ? new Date(pub.date).getFullYear() : null
+  const year = getPublicationYear(pub)
+  const isUnderReview = !pub.date
 
   return (
     <div className="group border-b border-border bg-white transition-colors duration-700 ease-in-out hover:bg-[#eef7ff]"
@@ -19,14 +47,28 @@ function PublicationRow({ pub }: { pub: Publication }) {
       <div className="flex items-start justify-between gap-6">
         <div className="flex-1 min-w-0">
           {/* Title */}
-          <h3 className="font-display text-2xl text-ink mb-2 leading-snug" style={{ fontWeight: 600 }}>
+          <h3 className="font-display text-2xl text-ink mb-2 leading-snug flex flex-wrap items-center gap-2" style={{ fontWeight: 600 }}>
             {pub.url ? (
               <a href={pub.url} target="_blank" rel="noopener noreferrer"
                 className="transition-colors cursor-pointer">
                 {pub.title}
-                <span className="ml-2 text-sm font-mono" style={{ color: 'var(--muted)' }}>↗</span>
               </a>
-            ) : pub.title}
+            ) : (
+              <span>{pub.title}</span>
+            )}
+            {pub.url && <span className="text-sm font-mono" style={{ color: 'var(--muted)' }}>↗</span>}
+            {isUnderReview && (
+              <span
+                className="font-mono text-xs px-2 py-1 leading-none"
+                style={{
+                  background: '#dff1ff',
+                  color: '#3a78a8',
+                  border: 'none',
+                }}
+              >
+                Under Review
+              </span>
+            )}
           </h3>
           {/* Authors */}
           {pub.authors && (
@@ -35,8 +77,8 @@ function PublicationRow({ pub }: { pub: Publication }) {
           {/* Meta tags */}
           <div className="flex flex-wrap items-center gap-3">
             {pub.journal && (
-              <span className="font-mono text-xs px-3 py-1 border border-border"
-                style={{ color: 'var(--accent)', borderColor: 'var(--accent)', background: 'rgba(26,58,92,0.04)' }}>
+              <span className="font-mono text-xs"
+                style={{ color: 'var(--accent)' }}>
                 {pub.journal}
               </span>
             )}
@@ -76,19 +118,23 @@ export default async function PublicationsPage() {
 
   // Group by year
   const byYear = pubs.reduce<Record<string, Publication[]>>((acc, p) => {
-    const y = p.date ? new Date(p.date).getFullYear().toString() : 'Unknown'
+    const y = getPublicationYear(p).toString()
     if (!acc[y]) acc[y] = []
     acc[y].push(p)
     return acc
   }, {})
 
+  for (const year of Object.keys(byYear)) {
+    byYear[year].sort(comparePublications)
+  }
+
   const sortedYears = Object.keys(byYear).sort((a, b) => Number(b) - Number(a))
 
   return (
-    <div className="max-w-6xl mx-auto px-8 py-20">
+    <div className="max-w-6xl mx-auto px-8 pt-10 pb-20">
       {/* Header */}
       <div className="border-b border-border pb-8 mb-16">
-        <p className="font-mono text-xs tracking-[0.3em] uppercase mb-4" style={{ color: 'var(--highlight)' }}>Research Output</p>
+        <p className="font-mono text-xs tracking-[0.12em] uppercase mb-4" style={{ color: 'var(--highlight)' }}>Research Output</p>
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <h1 className="font-display text-5xl md:text-6xl text-accent">Publications</h1>
           <PublicationsKpi
@@ -107,14 +153,24 @@ export default async function PublicationsPage() {
         sortedYears.map(year => (
           <div key={year} className="mb-16">
             {/* Year header */}
-            <div className="flex items-center gap-4 mb-2 sticky top-16 py-3"
-              style={{ background: 'var(--paper)', zIndex: 10 }}>
+            <div
+              className="sticky flex items-center gap-4 py-3"
+              style={{
+                top: '56px',
+                background: 'var(--paper)',
+                zIndex: 20,
+                borderBottom: '1px solid var(--border)',
+                paddingLeft: '1rem',
+                paddingRight: '1rem',
+                marginLeft: '-1rem',
+                marginRight: '-1rem',
+              }}>
               <span className="font-display text-4xl" style={{ color: 'var(--accent)' }}>{year}</span>
               <span className="font-mono text-xs font-medium" style={{ color: 'var(--ink)' }}>
                 {byYear[year].length} {byYear[year].length === 1 ? 'paper' : 'papers'}
               </span>
             </div>
-            <div>
+            <div className="pt-2">
               {byYear[year].map(pub => <PublicationRow key={pub.id} pub={pub} />)}
             </div>
           </div>

@@ -42,6 +42,8 @@ export type NewsItem = {
   category: string
   content: string
   link: string
+  imageUrl: string | null
+  imageUrls: string[]
 }
 
 // ── Helpers ────────────────────────────────────────────────────────────────
@@ -81,6 +83,15 @@ function getFileUrl(prop: any): string | null {
   if (!files || files.length === 0) return null
   const f = files[0]
   return f.type === 'external' ? f.external.url : f.file?.url ?? null
+}
+
+function getFileUrls(prop: any): string[] {
+  const files = prop?.files
+  if (!files || files.length === 0) return []
+
+  return files
+    .map((f: any) => (f.type === 'external' ? f.external.url : f.file?.url ?? null))
+    .filter((url: string | null): url is string => Boolean(url))
 }
 
 // ── Fetchers ───────────────────────────────────────────────────────────────
@@ -169,5 +180,7 @@ export async function getNews(): Promise<NewsItem[]> {
       category: getSelect(p.properties.category),
       content: getRichText(p.properties.content),
       link: getUrl(p.properties.link),
+      imageUrl: getFileUrl(p.properties.image),
+      imageUrls: getFileUrls(p.properties.image),
     }))
 }

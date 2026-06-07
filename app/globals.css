@@ -9,11 +9,11 @@
   --font-body: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
   --font-mono: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
 
-  --ink: #101723;
+  --ink: #22252b;
   --paper: #ffffff;
-  --accent: #19324d;
+  --accent: #111111;
   --highlight: #2f7ec0;
-  --muted: #5b6575;
+  --muted: #646a75;
   --border: #d7dde5;
   --surface: #f4f6f9;
 }
@@ -41,7 +41,7 @@ body {
 ::-webkit-scrollbar-thumb { background: #8e9caf; border-radius: 3px; }
 
 /* ── Selection ── */
-::selection { background: #173f67; color: #f3f8ff; }
+::selection { background: #454b57; color: #f3f8ff; }
 
 /* ── Typography ── */
 .font-display {

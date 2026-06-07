@@ -3,15 +3,21 @@ import Image from 'next/image'
 
 export const revalidate = 60
 
+function isOngoingStatus(status: string): boolean {
+  return status.toLowerCase().replace(/[^a-z]/g, '') === 'ongoing'
+}
+
 function ProjectCard({ p }: { p: Project }) {
+  const isOngoing = isOngoingStatus(p.status || '')
+
   return (
-    <div className="group border border-border overflow-hidden transition-all duration-300 hover:border-accent hover:-translate-y-1 hover:shadow-lg"
+    <div className="group border border-border overflow-hidden flex flex-col h-[600px] transition-all duration-300 hover:border-accent hover:-translate-y-1 hover:shadow-lg"
       style={{ background: 'var(--paper)' }}>
       {/* Thumbnail */}
       <div className="relative w-full aspect-video overflow-hidden"
         style={{ background: 'var(--surface)' }}>
         {p.thumbnailUrl ? (
-          <Image src={p.thumbnailUrl} alt={p.title} fill className="object-cover transition-transform duration-500 group-hover:scale-105" unoptimized />
+          <Image src={p.thumbnailUrl} alt={p.title} fill className="object-contain p-2" unoptimized />
         ) : (
           <div className="w-full h-full flex items-center justify-center">
             <span className="font-display text-4xl" style={{ color: 'var(--border)' }}>◈</span>
@@ -21,8 +27,8 @@ function ProjectCard({ p }: { p: Project }) {
         <div className="absolute top-3 right-3">
           <span className="font-mono text-xs px-2 py-1"
             style={{
-              background: p.status === 'Ongoing' ? 'var(--accent)' : 'rgba(0,0,0,0.5)',
-              color: 'white',
+              background: isOngoing ? '#dff1ff' : 'rgba(0,0,0,0.5)',
+              color: isOngoing ? '#3a78a8' : 'white',
             }}>
             {p.status || 'Project'}
           </span>
@@ -30,7 +36,7 @@ function ProjectCard({ p }: { p: Project }) {
       </div>
 
       {/* Content */}
-      <div className="p-6">
+      <div className="p-6 flex flex-col flex-1 min-h-0">
         <h3 className="font-display text-xl text-ink mb-2 group-hover:text-accent transition-colors">
           {p.title}
         </h3>
@@ -38,21 +44,19 @@ function ProjectCard({ p }: { p: Project }) {
           <p className="font-mono text-xs mb-3" style={{ color: 'var(--highlight)' }}>{p.period}</p>
         )}
         {p.description && (
-          <p className="text-sm leading-relaxed line-clamp-3 mb-4" style={{ color: 'var(--muted)' }}>
+          <p className="text-sm leading-relaxed mb-4 overflow-hidden flex-1 min-h-0" style={{ color: 'var(--muted)' }}>
             {p.description}
           </p>
         )}
         {/* Tags */}
-        {p.tags.length > 0 && (
-          <div className="flex flex-wrap gap-2 mt-4 pt-4 border-t border-border">
-            {p.tags.map(tag => (
-              <span key={tag} className="font-mono text-xs px-2 py-0.5"
-                style={{ background: 'var(--surface)', color: 'var(--muted)' }}>
-                {tag}
-              </span>
-            ))}
-          </div>
-        )}
+        <div className="flex flex-wrap gap-2 mt-auto pt-4 border-t border-border min-h-[44px] content-start">
+          {p.tags.map(tag => (
+            <span key={tag} className="font-mono text-xs px-2 py-0.5"
+              style={{ background: 'var(--surface)', color: 'var(--muted)' }}>
+              {tag}
+            </span>
+          ))}
+        </div>
       </div>
     </div>
   )
@@ -60,14 +64,14 @@ function ProjectCard({ p }: { p: Project }) {
 
 export default async function ProjectsPage() {
   const projects = await getProjects()
-  const ongoing = projects.filter(p => p.status === 'Ongoing')
-  const completed = projects.filter(p => p.status !== 'Ongoing')
+  const ongoing = projects.filter(p => isOngoingStatus(p.status || ''))
+  const completed = projects.filter(p => !isOngoingStatus(p.status || ''))
 
   return (
-    <div className="max-w-6xl mx-auto px-8 py-20">
+    <div className="max-w-6xl mx-auto px-8 pt-10 pb-20">
       {/* Header */}
       <div className="border-b border-border pb-8 mb-16">
-        <p className="font-mono text-xs tracking-[0.3em] uppercase mb-4" style={{ color: 'var(--highlight)' }}>Portfolio</p>
+        <p className="font-mono text-xs tracking-[0.15em] uppercase mb-4" style={{ color: 'var(--highlight)' }}>Portfolio</p>
         <div className="flex items-end justify-between">
           <h1 className="font-display text-5xl md:text-6xl text-accent">Projects</h1>
           <div className="flex gap-4 pb-2 font-mono text-xs" style={{ color: 'var(--muted)' }}>
