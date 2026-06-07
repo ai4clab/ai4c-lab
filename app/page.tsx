@@ -109,7 +109,7 @@ export default function HomePage() {
             컴퓨터 비전, 로보틱스, 생성형 AI를 건축공학에 접목하여 더 스마트하고 지속가능한 건조환경을 만들어갑니다.
           </p>
           <div className="flex flex-wrap gap-4 fade-up fade-up-delay-4">
-            <Link href="/research" className="px-6 py-3 text-sm font-mono tracking-wide transition-all"
+            <Link href="/publications" className="px-6 py-3 text-sm font-mono tracking-wide transition-all"
               style={{ background: 'var(--accent)', color: 'white', letterSpacing: '0.05em' }}>
               Our Research →
             </Link>
