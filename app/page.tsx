@@ -89,7 +89,7 @@ export default function HomePage() {
           opacity: 0.5,
         }} />
         {/* Accent blob */}
-        <div className="absolute right-0 top-1/4 w-[600px] h-[600px] rounded-full pointer-events-none"
+        <div className="absolute right-0 top-1/6 w-[600px] h-[600px] rounded-full pointer-events-none"
           style={{ background: 'radial-gradient(circle, rgba(58,58,58,0.08) 0%, transparent 70%)', transform: 'translate(30%, 0)' }} />
 
         <div className="max-w-6xl mx-auto w-full relative z-10 py-24">
