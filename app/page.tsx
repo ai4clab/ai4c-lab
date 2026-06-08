@@ -91,7 +91,7 @@ export default function HomePage() {
         {/* Accent blob */}
         <div className="absolute right-0 top-1/4 w-[600px] h-[600px] rounded-full pointer-events-none"
           style={{ background: 'radial-gradient(circle, rgba(58,58,58,0.08) 0%, transparent 70%)', transform: 'translate(30%, 0)' }} />
-
+        {/* 랜딩페이지 여백 레이아웃 */}
         <div className="max-w-6xl mx-auto w-full relative z-10 pt-16 pb-24">
           <p className="font-mono text-sm tracking-[0.125em] uppercase mb-6 fade-up fade-up-delay-1"
             style={{ color: 'var(--highlight)' }}>
