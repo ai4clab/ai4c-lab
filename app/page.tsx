@@ -100,7 +100,7 @@ export default function HomePage() {
           <h1 className="font-display text-6xl md:text-8xl leading-none text-accent mb-8 fade-up fade-up-delay-2"
             style={{ letterSpacing: '-0.02em' }}>
             AI for<br />
-            <span style={{ fontStyle: 'italic' }}>Construction</span><br />
+            <span style={{ fontWeight: 'bold' }}>Construction</span><br />
             Laboratory
           </h1>
           <p className="text-lg md:text-xl max-w-xl mb-12 fade-up fade-up-delay-3"
