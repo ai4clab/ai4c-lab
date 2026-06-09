@@ -20,7 +20,7 @@ export default async function NewsPage() {
       <div className="border-b border-border pb-8 mb-12">
         <p className="font-mono text-xs tracking-[0.15em] uppercase mb-4" style={{ color: 'var(--highlight)' }}>Updates</p>
         <div className="flex items-end justify-between">
-          <h1 className="font-display text-5xl md:text-6xl text-accent">News</h1>
+          <h1 className="font-display text-5xl md:text-6xl text-accent fade-up fade-up-delay-1">News</h1>
           <span className="font-mono text-sm pb-2" style={{ color: 'var(--muted)' }}>
             {news.length} items
           </span>

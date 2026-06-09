@@ -33,7 +33,7 @@ export default async function ProfessorPage() {
         <p className="font-mono text-xs tracking-[0.15em] uppercase mb-4" style={{ color: 'var(--highlight)' }}>
           Faculty
         </p>
-        <h1 className="font-display text-5xl md:text-6xl text-accent">Professor</h1>
+        <h1 className="font-display text-5xl md:text-6xl text-accent fade-up fade-up-delay-1">Professor</h1>
       </div>
 
       {/* Profile */}

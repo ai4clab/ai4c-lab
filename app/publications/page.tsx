@@ -136,7 +136,7 @@ export default async function PublicationsPage() {
       <div className="border-b border-border pb-8 mb-16">
         <p className="font-mono text-xs tracking-[0.12em] uppercase mb-4" style={{ color: 'var(--highlight)' }}>Research Output</p>
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-          <h1 className="font-display text-5xl md:text-6xl text-accent">Publications</h1>
+          <h1 className="font-display text-5xl md:text-6xl text-accent fade-up fade-up-delay-1">Publications</h1>
           <PublicationsKpi
             paperCount={paperCount}
             totalCitations={totalCitations}

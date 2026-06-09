@@ -73,7 +73,7 @@ export default async function ProjectsPage() {
       <div className="border-b border-border pb-8 mb-16">
         <p className="font-mono text-xs tracking-[0.15em] uppercase mb-4" style={{ color: 'var(--highlight)' }}>Portfolio</p>
         <div className="flex items-end justify-between">
-          <h1 className="font-display text-5xl md:text-6xl text-accent">Projects</h1>
+          <h1 className="font-display text-5xl md:text-6xl text-accent fade-up fade-up-delay-1">Projects</h1>
           <div className="flex gap-4 pb-2 font-mono text-xs" style={{ color: 'var(--muted)' }}>
             <span style={{ color: '#3a78a8' }}>
               {ongoing.length} ongoing

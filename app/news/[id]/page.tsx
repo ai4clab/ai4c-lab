@@ -54,7 +54,7 @@ export default async function NewsDetailPage({ params }: { params: { id: string 
           <div>
             <div className="border-b border-border pb-6 mb-8">
               <p className="font-mono text-xs tracking-[0.15em] uppercase mb-3" style={{ color: 'var(--highlight)' }}>Updates</p>
-              <h1 className="font-display text-[2.1rem] md:text-[2.6rem] leading-[1.05] text-accent">{item.title}</h1>
+              <h1 className="font-display text-[2.1rem] md:text-[2.6rem] leading-[1.05] text-accent fade-up fade-up-delay-1">{item.title}</h1>
               <p className="font-mono text-sm mt-4" style={{ color: 'var(--muted)' }}>{formatDate(item.date)}</p>
             </div>
             <div className="space-y-5 text-base leading-relaxed" style={{ color: 'var(--muted)' }}>
@@ -70,7 +70,7 @@ export default async function NewsDetailPage({ params }: { params: { id: string 
         <div className="max-w-4xl">
           <div className="border-b border-border pb-6 mb-8">
             <p className="font-mono text-xs tracking-[0.15em] uppercase mb-3" style={{ color: 'var(--highlight)' }}>Updates</p>
-            <h1 className="font-display text-[2.1rem] md:text-[2.6rem] leading-[1.05] text-accent">{item.title}</h1>
+            <h1 className="font-display text-[2.1rem] md:text-[2.6rem] leading-[1.05] text-accent fade-up fade-up-delay-1">{item.title}</h1>
             <p className="font-mono text-sm mt-4" style={{ color: 'var(--muted)' }}>{formatDate(item.date)}</p>
           </div>
 
