@@ -40,7 +40,9 @@ export async function GET(req: NextRequest) {
   const height = clamp(Number.isFinite(heightParam) ? Math.round(heightParam) : 480, 64, 2000)
   const fit = fitParam === 'contain' ? 'contain' : 'cover'
 
-  const upstream = await fetch(url.toString(), { cache: 'no-store' })
+  const upstream = await fetch(url.toString(), {
+    next: { revalidate: 86400 },
+  })
   if (!upstream.ok) {
     return NextResponse.json({ error: 'Failed to fetch upstream image' }, { status: 502 })
   }
@@ -55,7 +57,7 @@ export async function GET(req: NextRequest) {
   return new NextResponse(output as unknown as BodyInit, {
     headers: {
       'Content-Type': 'image/webp',
-      'Cache-Control': 'public, max-age=3600, s-maxage=3600',
+      'Cache-Control': 'public, max-age=86400, s-maxage=604800, stale-while-revalidate=2592000',
     },
   })
 }

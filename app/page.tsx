@@ -137,7 +137,13 @@ export default function HomePage() {
                 style={{ borderColor: 'var(--border)', background: 'var(--paper)' }}>
                 <div className="grid grid-cols-1 sm:grid-cols-[40%_60%] min-h-[280px]">
                   <div className="relative min-h-[220px] sm:min-h-0">
-                    <Image src={area.image} alt={area.title} fill className="object-cover" unoptimized />
+                    <Image
+                      src={area.image}
+                      alt={area.title}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 40vw"
+                      className="object-cover"
+                    />
                     <div className="absolute top-4 left-4 w-10 h-10 flex items-center justify-center font-mono text-sm"
                       style={{ background: '#111111', color: 'white' }}>
                       <TechnologyIcon kind={area.icon} />

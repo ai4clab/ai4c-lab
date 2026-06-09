@@ -45,8 +45,8 @@ function MemberCard({ m }: { m: Member }) {
             src={buildNotionImageProxyUrl(m.imageUrl, 480, 480, 'cover')}
             alt={m.name}
             fill
+            sizes="160px"
             className="object-cover"
-            unoptimized
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center font-display text-2xl text-accent">

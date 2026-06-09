@@ -45,8 +45,8 @@ export default async function ProfessorPage() {
                 src={buildNotionImageProxyUrl(professor.imageUrl, 800, 1000, 'cover')}
                 alt={name}
                 fill
+                sizes="(max-width: 768px) 100vw, 320px"
                 className="object-cover"
-                unoptimized
               />
             ) : (
               <div className="w-full h-full flex items-center justify-center font-display text-6xl text-accent">

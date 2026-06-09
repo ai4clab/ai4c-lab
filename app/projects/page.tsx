@@ -17,7 +17,13 @@ function ProjectCard({ p }: { p: Project }) {
       <div className="relative w-full aspect-video overflow-hidden"
         style={{ background: 'var(--surface)' }}>
         {p.thumbnailUrl ? (
-          <Image src={p.thumbnailUrl} alt={p.title} fill className="object-contain p-2" unoptimized />
+          <Image
+            src={p.thumbnailUrl}
+            alt={p.title}
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            className="object-contain p-2"
+          />
         ) : (
           <div className="w-full h-full flex items-center justify-center">
             <span className="font-display text-4xl" style={{ color: 'var(--border)' }}>◈</span>
