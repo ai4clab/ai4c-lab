@@ -54,7 +54,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </div>
             <div className="text-muted text-sm font-mono space-y-2 md:text-right">
               <p>© {new Date().getFullYear()} AI4C Lab. All rights reserved.</p>
-              <p>서울특별시 성동구 왕십로 222 한양대학교 과학기술관 608-2 / TEL : 02-2220-0327 / 이메일 무단수집거부</p>
+              <p>서울특별시 성동구 왕십리로 222 한양대학교 과학기술관 608-2 / TEL : 02-2220-0327 / 이메일 무단수집거부</p>
             </div>
           </div>
         </footer>
