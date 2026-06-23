@@ -36,16 +36,22 @@ function MemberCard({ m }: { m: Member }) {
   const isProfessor = normalizeCourse(m.course) === 'Professor'
 
   const card = (
-    <div className="group min-w-0 border border-border p-6 transition-all duration-300 hover:border-accent hover:-translate-y-1"
+    <div className="group min-w-0 border border-border p-4 md:p-6 transition-all duration-300 hover:border-accent hover:-translate-y-1"
       style={{ background: 'var(--paper)', borderColor: 'var(--surface)' }}>
-      <div className="relative w-40 h-40 rounded-full overflow-hidden mb-4 mx-auto"
-        style={{ background: 'var(--surface)', border: '0.75px solid var(--border)' }}>
+      <div
+        className="relative aspect-square rounded-full overflow-hidden mb-4 mx-auto"
+        style={{
+          width: 'min(160px, calc(100% - 16px))',
+          background: 'var(--surface)',
+          border: '0.75px solid var(--border)',
+        }}
+      >
         {m.imageUrl ? (
           <Image
             src={buildNotionImageProxyUrl(m.imageUrl, 480, 480, 'cover')}
             alt={m.name}
             fill
-            sizes="160px"
+            sizes="(max-width: 768px) calc(50vw - 72px), 160px"
             className="object-cover"
           />
         ) : (
@@ -97,7 +103,7 @@ export default async function MembersPage() {
   const sortedRoles = Object.keys(grouped).sort((a, b) => (courseOrder[a] ?? 99) - (courseOrder[b] ?? 99))
 
   return (
-    <div className="max-w-6xl mx-auto px-8 pt-10 pb-20">
+    <div className="max-w-6xl mx-auto px-4 sm:px-8 pt-10 pb-20">
       {/* Header */}
       <div className="border-b border-border pb-8 mb-16">
         <p className="font-mono text-xs tracking-[0.15em] uppercase mb-4 fade-up" style={{ color: 'var(--highlight)' }}>People</p>
