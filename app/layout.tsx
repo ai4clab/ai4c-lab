@@ -5,12 +5,34 @@ import Nav from '@/components/Nav'
 import DisableContextMenu from '@/components/DisableContextMenu'
 
 export const metadata: Metadata = {
-  title: 'AI4C Lab',
+  title: '한양대학교 AI4C Lab',
   description: 'AI for Construction Laboratory',
   icons: {
     icon: '/src/logo4.png',
     shortcut: '/src/logo4.png',
     apple: '/src/logo4.png',
+  },
+  metadataBase: new URL('https://ai4c.hanyang.ac.kr'),
+  openGraph: {
+    title: '한양대학교 건설인공지능연구실',
+    description: 'AI for Construction Laboratory',
+    url: 'https://ai4c.hanyang.ac.kr',
+    siteName: '한양대학교 건설인공지능연구실',
+    type: 'website',
+    images: [
+      {
+        url: '/src/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'AI4C Lab',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'AI4C Lab',
+    description: 'AI for Construction Laboratory',
+    images: ['/src/og-image.png'],
   },
 }
 
