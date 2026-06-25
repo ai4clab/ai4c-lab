@@ -86,7 +86,7 @@ async function NewsSection() {
   const recentNews = news.slice(0, 2)
 
   return (
-    <section className="px-8 pt-12 pb-24">
+    <section className="px-8 pt-20 pb-20" style={{ background: 'var(--surface)' }}>
       <div className="max-w-6xl mx-auto">
         <div className="flex items-end justify-between mb-8 border-b border-border pb-6">
           <div>
@@ -191,8 +191,13 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ── News ── */}
+      <Suspense fallback={null}>
+        <NewsSection />
+      </Suspense>
+
       {/* ── Research Areas ── */}
-      <section className="px-8 py-24" style={{ background: 'var(--surface)' }}>
+      <section className="px-8 pt-20 pb-24">
         <div className="max-w-6xl mx-auto">
           <div className="flex items-end justify-between mb-8 border-b border-border pb-6">
             <div>
@@ -247,11 +252,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-      {/* ── News ── */}
-      <Suspense fallback={null}>
-        <NewsSection />
-      </Suspense>
 
       {/* ── Contact Strip ── */}
       <section className="px-8 py-20" style={{ background: 'var(--accent)' }}>
