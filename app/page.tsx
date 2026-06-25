@@ -1,5 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import { Suspense } from 'react'
+import { getNews } from '@/lib/notion'
 
 const researchAreas = [
   {
@@ -77,6 +79,74 @@ function TechnologyIcon({ kind }: { kind: string }) {
   )
 }
 
+export const revalidate = 60
+
+async function NewsSection() {
+  const news = await getNews()
+  const recentNews = news.slice(0, 2)
+
+  return (
+    <section className="px-8 pt-12 pb-24">
+      <div className="max-w-6xl mx-auto">
+        <div className="flex items-end justify-between mb-8 border-b border-border pb-6">
+          <div>
+            <p className="font-mono text-xs tracking-[0.15em] uppercase mb-3" style={{ color: 'var(--highlight)' }}>Updates</p>
+            <h2 className="font-display text-4xl md:text-5xl text-accent">News</h2>
+          </div>
+          <Link
+            href="/news"
+            className="font-mono text-sm pb-1 transition-colors hover:text-accent"
+            style={{ color: 'var(--muted)', letterSpacing: '0.05em' }}
+          >
+            더보기 +
+          </Link>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-6">
+          {recentNews.map((item) => (
+            <Link
+              key={item.id}
+              href={`/news/${item.id}`}
+              className="group border overflow-hidden block"
+              style={{ borderColor: 'var(--border)', background: 'var(--paper)' }}
+            >
+              <div className="grid grid-cols-[38%_62%] h-[190px]">
+                <div className="relative overflow-hidden">
+                  {item.imageUrl ? (
+                    <img
+                      src={item.imageUrl}
+                      alt={item.title}
+                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+                  ) : (
+                    <div className="absolute inset-0" style={{ background: 'var(--surface)' }} />
+                  )}
+                </div>
+                <div className="p-5 flex flex-col overflow-hidden">
+                  <h3
+                    className="font-display text-lg leading-snug mb-2 line-clamp-2 group-hover:text-accent transition-colors"
+                    style={{ color: 'var(--ink)' }}
+                  >
+                    {item.title}
+                  </h3>
+                  {item.content && (
+                    <p
+                      className="font-mono text-[12px] leading-5 line-clamp-4 flex-1"
+                      style={{ color: 'var(--muted)' }}
+                    >
+                      {item.content}
+                    </p>
+                  )}
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
 export default function HomePage() {
   return (
     <div>
@@ -124,7 +194,7 @@ export default function HomePage() {
       {/* ── Research Areas ── */}
       <section className="px-8 py-24" style={{ background: 'var(--surface)' }}>
         <div className="max-w-6xl mx-auto">
-          <div className="flex items-end justify-between mb-16 border-b border-border pb-6">
+          <div className="flex items-end justify-between mb-8 border-b border-border pb-6">
             <div>
               <p className="font-mono text-xs tracking-[0.15em] uppercase mb-3" style={{ color: 'var(--highlight)' }}>Focus Areas</p>
               <h2 className="font-display text-4xl md:text-5xl text-accent">Research Domains</h2>
@@ -173,6 +243,11 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* ── News ── */}
+      <Suspense fallback={null}>
+        <NewsSection />
+      </Suspense>
 
       {/* ── Contact Strip ── */}
       <section className="px-8 py-20" style={{ background: 'var(--accent)' }}>
