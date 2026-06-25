@@ -203,16 +203,20 @@ export default function HomePage() {
 
           <div className="grid md:grid-cols-2 gap-6">
             {researchAreas.map((area, i) => (
-              <div key={i} className="border overflow-hidden"
-                style={{ borderColor: 'var(--border)', background: 'var(--paper)' }}>
+              <Link
+                key={i}
+                href="/publications"
+                className="group border overflow-hidden block"
+                style={{ borderColor: 'var(--border)', background: 'var(--paper)' }}
+              >
                 <div className="grid grid-cols-1 sm:grid-cols-[40%_60%] min-h-[280px]">
-                  <div className="relative min-h-[220px] sm:min-h-0">
+                  <div className="relative min-h-[220px] sm:min-h-0 overflow-hidden">
                     <Image
                       src={area.image}
                       alt={area.title}
                       fill
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 40vw"
-                      className="object-cover"
+                      className="object-cover transition-transform duration-300 group-hover:scale-105"
                     />
                     <div className="absolute top-4 left-4 w-10 h-10 flex items-center justify-center font-mono text-sm"
                       style={{ background: '#111111', color: 'white' }}>
@@ -220,7 +224,7 @@ export default function HomePage() {
                     </div>
                   </div>
                   <div className="p-8 flex flex-col min-h-[280px]">
-                    <h3 className="font-display text-2xl leading-[1.15] mb-4" style={{ color: 'var(--ink)' }}>{area.title}</h3>
+                    <h3 className="font-display text-2xl leading-[1.15] mb-4 transition-colors group-hover:text-accent" style={{ color: 'var(--ink)' }}>{area.title}</h3>
                     <p className="font-mono text-[13px] leading-6 flex-1" style={{ color: 'var(--muted)' }}>{area.desc}</p>
                     <div className="mt-auto pt-5 border-t" style={{ borderColor: 'var(--border)' }}>
                       <div className="flex items-end">
@@ -238,7 +242,7 @@ export default function HomePage() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
