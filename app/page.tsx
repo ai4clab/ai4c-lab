@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Suspense } from 'react'
 import { getNews } from '@/lib/notion'
+import HeroSlideshow from '@/components/HeroSlideshow'
 
 const researchAreas = [
   {
@@ -152,14 +153,18 @@ export default function HomePage() {
     <div>
       {/* ── Hero ── */}
       <section className="relative min-h-[88vh] flex items-center overflow-hidden px-8">
+        <HeroSlideshow />
+
         {/* Background grid */}
         <div className="absolute inset-0 pointer-events-none" style={{
           backgroundImage: 'linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px)',
           backgroundSize: '60px 60px',
           opacity: 0.5,
+          WebkitMaskImage: 'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 45%, rgba(0,0,0,0) 82%)',
+          maskImage: 'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 45%, rgba(0,0,0,0) 82%)',
         }} />
         {/* Accent blob */}
-        <div className="absolute right-0 top-1/4 w-[600px] h-[600px] rounded-full pointer-events-none"
+        <div className="absolute right-0 top-1/4 w-[600px] h-[600px] rounded-full pointer-events-none z-[2]"
           style={{ background: 'radial-gradient(circle, rgba(58,58,58,0.08) 0%, transparent 70%)', transform: 'translate(30%, 0)' }} />
        {/* 랜딩페이지 여백 레이아웃 */}
         <div className="max-w-6xl mx-auto w-full relative z-10 pt-16 pb-24">

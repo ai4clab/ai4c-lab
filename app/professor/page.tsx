@@ -123,15 +123,12 @@ export default async function ProfessorPage() {
 
           <div className="mt-8">
             <h3 className="font-display text-2xl text-accent mb-4">Research Interests</h3>
-            <div className="grid sm:grid-cols-2 gap-2.5">
+            <div className="grid sm:grid-cols-2 gap-2">
               {researchInterests.map((interest) => (
                 <div
                   key={interest}
-                  className="flex items-center gap-2.5 border px-3 py-2.5"
-                  style={{ borderColor: 'var(--surface)', background: 'var(--paper)' }}
-                >
-                  <span className="w-1.5 h-1.5" style={{ background: 'var(--highlight)' }} />
-                  <span className="text-sm" style={{ color: 'var(--muted)' }}>{interest}</span>
+                  className="flex items-center gap-2.5 border px-2 py-0.5" style={{ borderColor: 'rgba(255,255,255,0)' }}>
+                  <span className="rounded-md text-sm px-3 py-1.5" style={{ color: 'var(--highlight)', background: 'rgba(6,133,243,0.1)' }}>{interest}</span>
                 </div>
               ))}
             </div>
