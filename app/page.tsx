@@ -160,8 +160,8 @@ export default function HomePage() {
           backgroundImage: 'linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px)',
           backgroundSize: '60px 60px',
           opacity: 0.5,
-          WebkitMaskImage: 'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 45%, rgba(0,0,0,0) 82%)',
-          maskImage: 'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 45%, rgba(0,0,0,0) 82%)',
+          WebkitMaskImage: 'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0.92) 38%, rgba(0,0,0,0.55) 64%, rgba(0,0,0,0) 90%)',
+          maskImage: 'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0.92) 38%, rgba(0,0,0,0.55) 64%, rgba(0,0,0,0) 90%)',
         }} />
         {/* Accent blob */}
         <div className="absolute right-0 top-1/4 w-[600px] h-[600px] rounded-full pointer-events-none z-[2]"
@@ -172,31 +172,67 @@ export default function HomePage() {
             style={{ color: 'var(--highlight)' }}>
             Hanyang University · Architectural Engineering
           </p>
-          <h1 className="font-display text-6xl md:text-8xl leading-none text-accent mb-10 fade-up fade-up-delay-2"
+          <h1 className="hidden md:block font-display text-6xl md:text-8xl leading-none text-accent mb-10 fade-up fade-up-delay-2"
             style={{ letterSpacing: '-0.02em' }}>
             AI for<br />
             <span style={{ fontWeight: 'bold' }}>Construction</span><br />
             Laboratory
           </h1>
-          <p className="text-base md:text-lg max-w-xl mb-12 fade-up fade-up-delay-3"
-            style={{ color: 'var(--muted)', lineHeight: 1.7 }}>
-            건축과 인공지능의 교차점에서, <strong>건설인공지능연구실(AI4C)</strong>은 건설 산업과 우리가 살아가는 공간의 스마트하고 지속가능한 미래를 그려갑니다. <br />
 
-            <span className="px-2 rounded-md"  style={{ fontWeight: 'bold', fontSize: 'medium', background: 'rgba(6,133,243,0.1)', color: '#1573c0' }}>Deep Learning</span>,
-            <span className="px-2 rounded-md"  style={{ fontWeight: 'bold', fontSize: 'medium', background: 'rgba(6,133,243,0.1)', color: '#1573c0' }}>Sensing Technology</span>, 
-            <span className="px-2 rounded-md"  style={{ fontWeight: 'bold', fontSize: 'medium', background: 'rgba(6,133,243,0.1)', color: '#1573c0' }}>Robotics</span>,
-            <span className="px-2 rounded-md"  style={{ fontWeight: 'bold', fontSize: 'medium', background: 'rgba(6,133,243,0.1)', color: '#1573c0' }}>Generative AI</span> 
-            등의 <strong>첨단기술을 건축공학에 접목하여</strong> 공간을 설계하고, 짓고, 운영하는 방식을 새롭게 정의합니다.
-          </p>
-          <div className="flex flex-wrap gap-4 fade-up fade-up-delay-4">
-            <Link href="/publications" className="px-6 py-3 text-sm font-mono tracking-wide transition-all"
-              style={{ background: 'var(--accent)', color: 'white', letterSpacing: '0.05em' }}>
-              Our Research →
-            </Link>
-            <Link href="/members" className="px-6 py-3 text-sm font-mono tracking-wide border transition-all hover:bg-[#eaf6ff] hover:text-accent"
-              style={{ borderColor: 'var(--ink)', color: 'var(--ink)', letterSpacing: '0.05em' }}>
-              Meet the Team
-            </Link>
+          <div className="md:hidden relative -mx-8 mb-8 overflow-hidden">
+            <HeroSlideshow mode="mobile" />
+            <div className="absolute inset-0" style={{ background: 'rgba(0, 0, 0, 0.5)' }} />
+            <h1 className="relative z-10 font-display text-[78px] leading-[0.95] text-white px-8 py-12 fade-up fade-up-delay-2"
+              style={{ letterSpacing: '-0.02em' }}>
+              AI for<br />
+              <span style={{ fontWeight: 'bold' }}>Construction</span><br />
+              Laboratory
+            </h1>
+          </div>
+          <div className="hidden md:block">
+            <p className="text-base md:text-lg max-w-xl mb-12 fade-up fade-up-delay-3"
+              style={{ color: 'var(--muted)', lineHeight: 1.7 }}>
+              건축과 인공지능의 교차점에서, <strong>건설인공지능연구실(AI4C)</strong>은 건설 산업과 우리가 살아가는 공간의 스마트하고 지속가능한 미래를 그려갑니다. <br />
+
+              <span className="px-2 rounded-md"  style={{ fontWeight: 'bold', fontSize: 'medium', background: 'rgba(6,133,243,0.1)', color: '#1573c0' }}>Deep Learning</span>,&nbsp;
+              <span className="px-2 rounded-md"  style={{ fontWeight: 'bold', fontSize: 'medium', background: 'rgba(6,133,243,0.1)', color: '#1573c0' }}>Sensing Technology</span>,&nbsp;
+              <span className="px-2 rounded-md"  style={{ fontWeight: 'bold', fontSize: 'medium', background: 'rgba(6,133,243,0.1)', color: '#1573c0' }}>Robotics</span>,&nbsp;
+              <span className="px-2 rounded-md"  style={{ fontWeight: 'bold', fontSize: 'medium', background: 'rgba(6,133,243,0.1)', color: '#1573c0' }}>Generative AI</span>
+              등의 <strong>첨단기술을 건축공학에 접목하여</strong> 공간을 설계하고, 짓고, 운영하는 방식을 새롭게 정의합니다.
+            </p>
+            <div className="flex flex-wrap gap-4 fade-up fade-up-delay-4">
+              <Link href="/publications" className="px-6 py-3 text-sm font-mono tracking-wide transition-all"
+                style={{ background: 'var(--accent)', color: 'white', letterSpacing: '0.05em' }}>
+                Our Research →
+              </Link>
+              <Link href="/members" className="px-6 py-3 text-sm font-mono tracking-wide border transition-all hover:bg-[#eaf6ff] hover:text-accent"
+                style={{ borderColor: 'var(--ink)', color: 'var(--ink)', letterSpacing: '0.05em' }}>
+                Meet the Team
+              </Link>
+            </div>
+          </div>
+
+          <div className="md:hidden max-w-xl mb-10">
+            <p className="text-base mb-8 fade-up fade-up-delay-3"
+              style={{ color: 'var(--muted)', lineHeight: 1.65 }}>
+              건축과 인공지능의 교차점에서, <strong>건설인공지능연구실(AI4C)</strong>은 건설 산업과 우리가 살아가는 공간의 스마트하고 지속가능한 미래를 그려갑니다. <br />
+
+              <span className="px-2 rounded-md" style={{ fontWeight: 'bold', fontSize: 'medium', background: 'rgba(6,133,243,0.1)', color: '#1573c0' }}>Deep Learning</span>,&nbsp;
+              <span className="px-2 rounded-md" style={{ fontWeight: 'bold', fontSize: 'medium', background: 'rgba(6,133,243,0.1)', color: '#1573c0' }}>Sensing Technology</span>,&nbsp;
+              <span className="px-2 rounded-md" style={{ fontWeight: 'bold', fontSize: 'medium', background: 'rgba(6,133,243,0.1)', color: '#1573c0' }}>Robotics</span>,&nbsp;
+              <span className="px-2 rounded-md" style={{ fontWeight: 'bold', fontSize: 'medium', background: 'rgba(6,133,243,0.1)', color: '#1573c0' }}>Generative AI</span>
+              등의 <strong>첨단기술을 건축공학에 접목하여</strong> 공간을 설계하고, 짓고, 운영하는 방식을 새롭게 정의합니다.
+            </p>
+            <div className="flex flex-wrap gap-3 fade-up fade-up-delay-4">
+              <Link href="/publications" className="px-5 py-2.5 text-sm font-mono tracking-wide transition-all"
+                style={{ background: 'var(--accent)', color: 'white', letterSpacing: '0.05em' }}>
+                Our Research →
+              </Link>
+              <Link href="/members" className="px-5 py-2.5 text-sm font-mono tracking-wide border transition-all"
+                style={{ borderColor: 'var(--ink)', color: 'var(--ink)', letterSpacing: '0.05em' }}>
+                Meet the Team
+              </Link>
+            </div>
           </div>
         </div>
       </section>
