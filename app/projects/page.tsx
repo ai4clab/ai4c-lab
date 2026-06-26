@@ -31,10 +31,10 @@ function ProjectCard({ p }: { p: Project }) {
         )}
         {/* Status badge */}
         <div className="absolute top-3 right-3">
-          <span className="font-bold text-xs px-2 py-1"
+          <span className="px-2 rounded-md font-bold text-xs px-2 py-1"
             style={{
-              background: isOngoing ? '#dff1ff' : 'rgba(0,0,0,0.5)',
-              color: isOngoing ? '#3a78a8' : 'white',
+              background: isOngoing ? '#dff1ff' : 'rgba(150,150,150,0.9)',
+              color: isOngoing ? 'var(--highlight)' : 'white',
             }}>
             {isOngoing ? '진행 중' : '완료'}
           </span>
@@ -81,7 +81,7 @@ export default async function ProjectsPage() {
         <div className="flex items-end justify-between">
           <h1 className="font-display text-5xl md:text-6xl text-accent fade-up fade-up-delay-1">Projects</h1>
           <div className="flex gap-4 pb-2 font-mono text-xs" style={{ color: 'var(--muted)' }}>
-            <span style={{ color: '#3a78a8' }}>
+            <span style={{ color: 'var(--highlight)' }}>
               {ongoing.length} ongoing
             </span>
             <span>·</span>
@@ -100,8 +100,8 @@ export default async function ProjectsPage() {
           {ongoing.length > 0 && (
             <div className="mb-16">
               <div className="flex items-center gap-4 mb-8">
-                <div className="w-2 h-2 rounded-full animate-pulse" style={{ color: '#3a78a8', background: '#3a78a8' }} />
-                <h2 className="font-mono text-sm tracking-widest uppercase" style={{ color: '#3a78a8' }}>Ongoing Research</h2>
+                <div className="w-2 h-2 rounded-full animate-pulse" style={{ color: 'var(--highlight)', background: 'var(--highlight)' }} />
+                <h2 className="font-mono text-sm tracking-widest uppercase" style={{ color: 'var(--highlight)' }}>Ongoing Research</h2>
                 <div className="flex-1 h-px" style={{ background: 'var(--border)' }} />
               </div>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">

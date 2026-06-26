@@ -176,7 +176,12 @@ export default function HomePage() {
           <p className="text-base md:text-lg max-w-xl mb-12 fade-up fade-up-delay-3"
             style={{ color: 'var(--muted)', lineHeight: 1.7 }}>
             건축과 인공지능의 교차점에서, <strong>건설인공지능연구실(AI4C)</strong>은 건설 산업과 우리가 살아가는 공간의 스마트하고 지속가능한 미래를 그려갑니다. <br />
-            Deep Learning, Sensing Technology, Robotics, Generative AI 등의 <strong>첨단기술을 건축공학에 접목하여</strong> 공간을 설계하고, 짓고, 운영하는 방식을 새롭게 정의합니다.
+
+            <span className="px-2 rounded-md"  style={{ fontWeight: 'bold', fontSize: 'medium', background: 'rgba(6,133,243,0.1)', color: '#1573c0' }}>Deep Learning</span>,
+            <span className="px-2 rounded-md"  style={{ fontWeight: 'bold', fontSize: 'medium', background: 'rgba(6,133,243,0.1)', color: '#1573c0' }}>Sensing Technology</span>, 
+            <span className="px-2 rounded-md"  style={{ fontWeight: 'bold', fontSize: 'medium', background: 'rgba(6,133,243,0.1)', color: '#1573c0' }}>Robotics</span>,
+            <span className="px-2 rounded-md"  style={{ fontWeight: 'bold', fontSize: 'medium', background: 'rgba(6,133,243,0.1)', color: '#1573c0' }}>Generative AI</span> 
+            등의 <strong>첨단기술을 건축공학에 접목하여</strong> 공간을 설계하고, 짓고, 운영하는 방식을 새롭게 정의합니다.
           </p>
           <div className="flex flex-wrap gap-4 fade-up fade-up-delay-4">
             <Link href="/publications" className="px-6 py-3 text-sm font-mono tracking-wide transition-all"

@@ -15,7 +15,7 @@ module.exports = {
         ink: '#111111',
         paper: '#FFFFFF',
         accent: '#111111',
-        highlight: '#2F7EC0',
+        highlight: '#1573c0',
         muted: '#646A75',
         border: '#D7DDE5',
       },

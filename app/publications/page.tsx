@@ -59,10 +59,10 @@ function PublicationRow({ pub }: { pub: Publication }) {
             {pub.url && <span className="text-sm font-mono" style={{ color: 'var(--muted)' }}>↗</span>}
             {isUnderReview && (
               <span
-                className="font-mono text-xs px-2 py-1 leading-none"
+                className="rounded-md px-2 py-1.5 font-mono text-xs leading-none"
                 style={{
                   background: '#dff1ff',
-                  color: '#3a78a8',
+                  color: 'var(--highlight)',
                   border: 'none',
                 }}
               >
