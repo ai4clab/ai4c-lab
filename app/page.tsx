@@ -175,8 +175,8 @@ export default function HomePage() {
           </h1>
           <p className="text-lg md:text-xl max-w-xl mb-12 fade-up fade-up-delay-3"
             style={{ color: 'var(--muted)', lineHeight: 1.7 }}>
-            건축과 인공지능의 교차점에서, 건설인공지능연구실(AI4C)은 건설 산업과 우리가 살아가는 공간의 미래를 그려갑니다.
-            Deep Learning, Sensing Technology, Robotics, Generative AI 등의 첨단기술을 통해 공간을 설계하고 짓고 운영하는 방식을 새롭게 정의합니다.
+            건축과 인공지능의 교차점에서, 건설인공지능연구실(AI4C)은 건설 산업과 우리가 살아가는 공간의 스마트하고 지속가능한 미래를 그려갑니다.
+            Deep Learning, Sensing Technology, Robotics, Generative AI 등의 첨단기술을 건축공학에 접목하여 공간을 설계하고, 짓고, 운영하는 방식을 새롭게 정의합니다.
           </p>
           <div className="flex flex-wrap gap-4 fade-up fade-up-delay-4">
             <Link href="/publications" className="px-6 py-3 text-sm font-mono tracking-wide transition-all"
